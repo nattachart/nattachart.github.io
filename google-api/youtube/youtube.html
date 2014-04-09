@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        <meta charset="UTF-8">
+        <title>YouTube API Auth | Google-api</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="nattachart">
+        <meta name="description" content="Book generated using GitBook">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        
+        <link rel="prev" href="../index.html" />
+        
+
+        <meta property="og:title" content="YouTube API Auth | Google-api">
+        <meta property="og:site_name" content="Google-api">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/nattachart">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+        
+        <link rel="stylesheet" href="../gitbook/style.css">
+        
+        
+    </head>
+    <body>
+        
+<div class="book" data-github="nattachart/google-api" data-level="1" data-basepath=".." data-revision="1397058910779">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="https://github.com/nattachart/google-api" target="_blank" class="btn pull-left"><i class="fa fa-github-alt"></i></a>
+    <a href="#" class="btn pull-left toggle-summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search"><i class="fa fa-search"></i></a>
+
+    <!-- Actions Right -->
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="google-plus"><i class="fa fa-google-plus"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="twitter"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://github.com/nattachart/google-api/stargazers" target="_blank" class="btn pull-right count-star"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/nattachart/google-api/watchers" target="_blank" class="btn pull-right count-watch"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+
+
+    <!-- Title -->
+    <h1><a href="../" >Google-api</a></h1>
+</div>
+
+    <div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        <li>
+            <a href="https://github.com/nattachart" target="blank">About the author</a>
+        </li>
+        <li>
+            <a href="https://github.com/nattachart/google-api/issues" target="blank">Questions and Issues</a>
+        </li>
+        <li>
+            <a href="https://github.com/nattachart/google-api/edit/master/youtube/youtube.md" target="blank">Edit and Contribute</a>
+        </li>
+        <li class="divider"></li>
+        <li data-level="0" data-path="index.html">
+            <a href="../"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+            <li  data-level="1" data-path="youtube/youtube.html">
+                
+                <a href="../youtube/youtube.html">
+                    <i class="fa fa-check"></i> <b>1)</b> YouTube API Auth
+                </a>
+                
+                
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body" tabindex="-1">
+        <div class="body-inner">
+            <div class="page-wrapper">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 100%;min-width: 0%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="../index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="../youtube/youtube.html" title="YouTube API Auth" class="chapter done new-chapter" data-progress="1" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_2">
+                    
+                        <h3 id="authentication-and-authorization">Authentication and Authorization</h3>
+<h4 id="terminology">Terminology</h4>
+<ul>
+<li><p><strong>Authentication</strong> means the process of proving of one&#39;s identity that it is authentic. For example, a user proves him/herself to a web application by performing the login, providing the username and password.</p>
+</li>
+<li><p><strong>Authorization</strong> is an act that specifies access rights to resources for an identity. For example, a user can be granted for only reading a file, but not writing. For the case of YouTube API, an application that use the API may be granted the rights for only read data from YouTube, or user&#39;s account information, but not modifying the private information. This granting in YouTube or Google is done by the user who is the account owner.</p>
+</li>
+<li><p>A <strong>token</strong> is something that represents something else, generally having higher value, such as a coin representing an amount of money. In the case of security, a token may be used to represent a pass of authentication, a result from an authorization. In the case of Google API, after a user grants permissions for an application (authorization), Google generates tokens that represent that authoziation (for the pair of the user and the application), and sends them back to the application. The application can store these tokens somewhere. When the application needs to perform specific actions that need authorization from the user again, it can just present the tokens to Google for verification. If the tokens are valid, Google allows the application to do what it requests according to the permissions having been granted by the user previously. Google now does not ask the user for authorization again. However, if the tokens are not valid, or absent, the user is going to be asked by Google whether he/she wants to grants the permission(s) to the application again.</p>
+</li>
+<li><p>A <strong>credential</strong> is an item to be used in security, to represent something on behalf of an individual. For example, the username and password are credentials to represent a user. A Google&#39;s OAuth token is a credential to represent a set of authorized permissions.</p>
+</li>
+</ul>
+<h4 id="getting-credentials-for-the-application">Getting Credentials for the Application</h4>
+<p>This step is going to get credentials that represent your application. There are many types of applications that can use Google APIs as mentioned <a href="https://developers.google.com/accounts/docs/OAuth2" target="_blank">here</a>. It assumes that you have already created a project in <a href="https://console.developers.google.com/project" target="_blank">here</a> already.</p>
+<p>Your application can be classified as an installed application, which is neither a web application, client-side application, nor device application. Therefore, when you go to get the credentials (client ID and client secret) by going into your project in Google -&gt; APIs &amp; auth -&gt; Credentials, then click CREATE NEW CLIENT ID and choose &quot;Installed application&quot;. You can also consult <a href="https://developers.google.com/console/help/" target="_blank">here</a>.</p>
+<p>Then you will see Client ID and Client secret under &quot;Client ID for native application&quot;. You can copy these two to replace &quot;Enter ...&quot; in <strong>client_secrets.json</strong> in the directory <strong>resources</strong> in <a href="../code/youtube">here</a>.</p>
+<h4 id="log-in-and-log-out">Log-in and Log-out</h4>
+<p>You can use the following <strong>Auth</strong> class to let your application&#39;s users log in and out using their Google accounts. The code with examples is <a href="../code/youtube">here</a>. You may also find its Java document <a href="../doc/Auth.html">here</a>.</p>
+<h4 id="libraries-required">Libraries Required</h4>
+<ul>
+<li><a href="https://code.google.com/p/google-api-java-client/wiki/Setup#Download_Library_with_Dependencies" target="_blank">google-api-java-client-1.17.0-rc.zip</a></li>
+<li>Servlet libraries<ul>
+<li>You can download and install Glassfish <a href="http://www.oracle.com/technetwork/java/javaee/downloads/index.html?ssSourceSiteId=otncn" target="_blank">here</a></li>
+<li>Find all javax.servlet{any thing}.jar in {glassfish folder}/glassfish/modules</li>
+<li>Include all of them into your project</li>
+</ul>
+</li>
+</ul>
+<h3 id="libraries-download-links">Libraries Download Links</h3>
+<ul>
+<li><a href="https://code.google.com/p/google-api-java-client/wiki/Setup#Download_Library_with_Dependencies" target="_blank">https://code.google.com/p/google-api-java-client/wiki/Setup#Download_Library_with_Dependencies</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javaee/downloads/index.html?ssSourceSiteId=otncn" target="_blank">http://www.oracle.com/technetwork/java/javaee/downloads/index.html?ssSourceSiteId=otncn</a></li>
+<li><a href="http://javadoc.google-http-java-client.googlecode.com/hg/1.17.0-rc/index.html?overview-summary.html" target="_blank">http://javadoc.google-http-java-client.googlecode.com/hg/1.17.0-rc/index.html?overview-summary.html</a></li>
+<li><a href="http://javadoc.google-api-java-client.googlecode.com/hg/1.17.0-rc/index.html" target="_blank">http://javadoc.google-api-java-client.googlecode.com/hg/1.17.0-rc/index.html</a></li>
+<li><a href="http://javadoc.google-oauth-java-client.googlecode.com/hg/1.17.0-rc/index.html?overview-summary.html" target="_blank">http://javadoc.google-oauth-java-client.googlecode.com/hg/1.17.0-rc/index.html?overview-summary.html</a></li>
+</ul>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../index.html" class="navigation navigation-prev"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="../gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="../gitbook/app.js"></script>
+        
+    </body>
+</html>
