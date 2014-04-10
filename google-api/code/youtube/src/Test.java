@@ -38,6 +38,8 @@ public class Test {
 		try{
 			//Revoke all permissions granted in authorization phase. If the method revoke() returns 200,200, it's fine.
 			System.out.println(auth.revoke());
+			//Log out
+			auth.logout();
 		} catch(Exception e){
 			System.out.println("The credential file does not exist.");
 		}

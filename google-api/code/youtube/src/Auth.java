@@ -11,13 +11,18 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.DataStore;
 import com.google.api.client.util.store.FileDataStoreFactory;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.io.Reader;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URI;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.Set;
@@ -99,6 +104,22 @@ public class Auth {
      */
     public void setScopes(List<String> scopes){
     	this.scopes = scopes;
+    }
+    
+    /**
+     * Log out from the current Google account
+     * @throws IOException
+     * @throws URISyntaxException
+     */
+    public void logout() throws IOException, URISyntaxException{
+    	String url = "https://www.google.com/accounts/Logout";
+    	URI obj = new URI(url);
+    	if(Desktop.isDesktopSupported()){
+    		Desktop.getDesktop().browse(obj);
+    	}
+//        HttpsURLConnection con = (HttpsURLConnection)obj.openConnection();
+//        con.setRequestMethod("GET");
+//        return con.getResponseCode();
     }
     
     /**
