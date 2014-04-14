@@ -160,8 +160,12 @@ public class Auth {
         con.setRequestMethod("GET");
         responseCodes += "," + con.getResponseCode();
         
-        Files.delete(new File(credentialPath).toPath());	//Delete the credential file
-        
+        Path p = new File(credentialPath).toPath();
+        File dir = new File(p.getParent().toString());
+        for(File f : dir.listFiles()){
+        	Files.delete(f.toPath()); //Delete all files in the credential directory
+        }
+
         return responseCodes;
     }
 
